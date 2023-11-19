@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Empresas</title>
+</head>
+<body>
+
+    <h2>Listagem das empresas</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Caracteristica da empresa</th>
+                <th>CPJ</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:each="empresa : ${empresaList}">
+                <td th:text="${empresa.nome}"></td>
+                <td th:text="${empresa.caracteristica_empresa}"></td>
+                <td th:text="${empresa.cnpj}"></td>
+           
+                
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

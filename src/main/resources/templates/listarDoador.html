@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Doadores</title>
+</head>
+<body>
+
+    <h2>Listagem de Doadores</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>RG</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Disponibilidade</th>
+                <th>Número da Casa</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Rua</th>
+                <th>CEP</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:each="doador : ${doadorList}">
+                <td th:text="${doador.nome}"></td>
+                <td th:text="${doador.sobrenome}"></td>
+                <td th:text="${doador.email}"></td>
+                <td th:text="${doador.rg}"></td>
+                <td th:text="${doador.cpf}"></td>
+                <td th:text="${doador.telefone}"></td>
+                <td th:text="${doador.disponibilidade}"></td>
+                <td th:text="${doador.numero_casa}"></td>
+                <td th:text="${doador.estado}"></td>
+                <td th:text="${doador.cidade}"></td>
+                <td th:text="${doador.bairro}"></td>
+                <td th:text="${doador.rua}"></td>
+                <td th:text="${doador.cep}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
