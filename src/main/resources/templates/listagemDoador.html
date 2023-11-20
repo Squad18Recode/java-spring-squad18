@@ -10,25 +10,32 @@
     <h2>Listagem de Doadores</h2>
 
     <!-- Formulário de Pesquisa -->
-    <form action="#" method="get" th:action="@{/doador}" th:object="${searchForm}">
-        <label for="searchInput">Pesquisar:</label>
-        <input type="text" id="searchInput" th:field="*{keyword}" />
-        <button type="submit">Pesquisar</button>
+    <form action="/doador" method="get" th:object="${doadorList}">
+        
     </form>
 
     <table border="1">
         <thead>
             <tr>
-                <!-- Cabeçalhos das Colunas -->
-                <!-- ... (mantenha os cabeçalhos existentes) ... -->
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Bairro</th>
+                <th>Cidade</th>
+                <th>Email</th>
+                <th>Disponibilidade</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Linhas de Doadores -->
+            <tr th:if="${#lists.isEmpty(doadorList)}">
+                <td colspan="6">Nenhum doador encontrado.</td>
+            </tr>
             <tr th:each="doador : ${doadorList}">
                 <td th:text="${doador.nome}"></td>
                 <td th:text="${doador.sobrenome}"></td>
-                <!-- ... (mantenha as colunas existentes) ... -->
+                <td th:text="${doador.bairro}"></td>
+                <td th:text="${doador.cidade}"></td>
+                <td th:text="${doador.email}"></td>
+                <td th:text="${doador.disponibilidade}"></td>
             </tr>
         </tbody>
     </table>
