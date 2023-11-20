@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Catadores</title>
+</head>
+<body>
+
+    <h2>Listagem de Catadores</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>RG</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Disponibilidade</th>
+                <th>Número da Casa</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Bairro</th>
+                <th>Rua</th>
+                <th>CEP</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr th:each="catador : ${catadorList}">
+                <td th:text="${catador.nome}"></td>
+                <td th:text="${catador.rg}"></td>
+                <td th:text="${catador.cpf}"></td>
+                <td th:text="${catador.telefone}"></td>
+                <td th:text="${catador.disponibilidade}"></td>
+                <td th:text="${catador.numero_casa}"></td>
+                <td th:text="${catador.estado}"></td>
+                <td th:text="${catador.cidade}"></td>
+                <td th:text="${catador.bairro}"></td>
+                <td th:text="${catador.rua}"></td>
+                <td th:text="${catador.cep}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,32 +1,36 @@
-<!DOCTYPE html>
+<!DOCTYPE html/>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listar Empresas</title>
+    <title>Listar Doadores</title>
 </head>
 <body>
 
-    <h2>Listagem das empresas</h2>
+    <h2>Listagem de Doadores</h2>
+
+    
+    <form action="/empresa" method="get" th:object="${empresaList}">
+        
+    </form>
 
     <table border="1">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>Caracteristica da empresa</th>
-                <th>CPJ</th>
-                
-                
+                <th>Cnpj</th>
             </tr>
         </thead>
         <tbody>
-            
+            <tr th:if="${#lists.isEmpty(empresaList)}">
+                <td colspan="6">Nenhuma empresa encontrada.</td>
+            </tr>
             <tr th:each="empresa : ${empresaList}">
                 <td th:text="${empresa.nome}"></td>
                 <td th:text="${empresa.caracteristica_empresa}"></td>
                 <td th:text="${empresa.cnpj}"></td>
-           
-                
+            
             </tr>
         </tbody>
     </table>

@@ -83,6 +83,12 @@ public class DoadorController {
             return "redirect:/doador";
         }
     }
+    @GetMapping("/deletar/{id}")
+	public String deleteDoador(@PathVariable Long id) { 
+		doadorService.deleteDoador(id);
+		return "redirect:/doador";
+	}
+    
 
     @GetMapping("/successPage")
     public String successPage() {

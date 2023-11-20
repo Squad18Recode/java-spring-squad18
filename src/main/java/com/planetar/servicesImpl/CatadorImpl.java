@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.planetar.model.Catador;
+import com.planetar.model.Doador;
 import com.planetar.repositorio.CatadorRepositorio;
 import com.planetar.services.CatadorInterface;
 import jakarta.transaction.Transactional;
@@ -28,8 +29,8 @@ public class CatadorImpl implements CatadorInterface {
 	}
 
 	@Transactional
-	public Catador saveDoador(Catador doador) {
-		return catadorRepositorio.save(doador);
+	public Catador saveCatador(Catador catador) {
+		return catadorRepositorio.save(catador);
 	}
 
 	@Override
@@ -83,7 +84,19 @@ public class CatadorImpl implements CatadorInterface {
 	}
 
 	@Override
-	public Catador saveCatador(Catador catador) {
+	public Catador saveCatador1(Catador catador) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Catador> getAlLCatador() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Doador updateCatador(Long id, Doador doador) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -31,7 +31,7 @@ public class EmpresaController {
 	    }
 
 	    @GetMapping
-	    public String listDoador(Model model) {
+	    public String listEmpresa(Model model) {
 	        List<Empresa> empresaList = empresaService.getAllEmpresa();
 	        model.addAttribute("empresaList", empresaList);
 	        return "listarEmpresa";
@@ -73,10 +73,16 @@ public class EmpresaController {
 	            return "redirect:/doador/successPage";
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	            return "redirect:/doador";
+	            return "redirect:/empresa";
 	        }
 	    }
 
+	    @GetMapping("/deletar/{id}")
+		public String deleteEmpresa(@PathVariable Long id) { 
+			empresaService.deleteEmpresa(id);
+			return "redirect:/empresa";
+		}
+	    
 	    @GetMapping("/successPage")
 	    public String successPage() {
 	        return "successPage";

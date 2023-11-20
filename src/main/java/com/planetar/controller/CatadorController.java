@@ -3,7 +3,7 @@ package com.planetar.controller;
 
 import com.google.gson.Gson;
 import com.planetar.model.Catador;
-
+import com.planetar.model.Doador;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -36,8 +36,8 @@ public class CatadorController {
 	// Listar
 	@GetMapping
 	public String listarCatador(Model model) {
-		List<Catador> doador = catadorService.getAlLDoador();
-		model.addAttribute("doador", doador);
+		List<Catador> catador = catadorService.getAlLCatador();
+		model.addAttribute("catadorList", catador);
 		return "ListarCatador";
 	}
 
@@ -53,9 +53,9 @@ public class CatadorController {
 	@PostMapping("/save")
 	 public String saveCatador(@RequestBody Catador catador, Model model) {
         try {
-        	System.out.println("Recebendo dados do doador: " + catador);
+        	System.out.println("Recebendo dados do Catador: " + catador);
             Catador savedCatador = catadorService.saveCatador(catador);
-            System.out.println("Doador salvo com sucesso: " + savedCatador);
+            System.out.println("Catador salvo com sucesso: " + savedCatador);
             model.addAttribute("savedDoador", savedCatador);
             return "redirect:/doador/successPage";
         } catch (Exception e) {
@@ -72,15 +72,24 @@ public class CatadorController {
 		return "editarCatador";
 	}
 
-	// Persistencia da edição
 	@PostMapping("/editar/{id}")
-	public String updateCatador(@PathVariable Long id, @ModelAttribute("doador") 
-	Catador doador) {
-		catadorService.updateCatador(id, doador);
-		return "redirect:/catador";
-	}
+    public String updateDoador(@PathVariable Long id,@RequestBody Doador catador, Model model) {
+        try {
+            System.out.println("Recebendo dados do doador: " + catador);
+            Doador updateCatador = catadorService.updateCatador(id, catador);
+            System.out.println("Doador salvo com sucesso: " + updateCatador);
+
+           
+            List<Catador> doadorList = catadorService.getAlLCatador();
+
+            model.addAttribute("doadorList", doadorList);
+            return "redirect:/doador/successPage";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/doador";
+        }
+    }
 	
-	// Excluir categoria
 	@GetMapping("/deletar/{id}")
 	public String deleteCatador(@PathVariable Long id) { 
 		catadorService.deleteCatador(id);
