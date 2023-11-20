@@ -61,4 +61,10 @@ public class DoadorImpl implements DoadorInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public Doador updateDoador(Doador doador) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

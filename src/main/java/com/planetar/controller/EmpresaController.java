@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.google.gson.Gson;
+import com.planetar.model.Doador;
 import com.planetar.model.Empresa;
 import com.planetar.services.EmpresaInterface;
 
@@ -56,7 +58,24 @@ public class EmpresaController {
 	            return "redirect:/empresa";
 	        }
 	    }
+	    
+	    @PostMapping("/editar/{id}")
+	    public String updateDoador(@PathVariable Long id,@RequestBody Empresa empresa, Model model) {
+	        try {
+	            System.out.println("Recebendo dados do doador: " + empresa);
+	            Empresa updateEmpresa = empresaService.updateEmpresa(id, empresa);
+	            System.out.println("Doador salvo com sucesso: " + updateEmpresa);
 
+	           
+	            List<Empresa> empresaList = empresaService.getAllEmpresa();
+
+	            model.addAttribute("empresa", empresaList);
+	            return "redirect:/doador/successPage";
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	            return "redirect:/doador";
+	        }
+	    }
 
 	    @GetMapping("/successPage")
 	    public String successPage() {

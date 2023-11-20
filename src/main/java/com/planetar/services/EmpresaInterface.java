@@ -12,8 +12,7 @@ public interface EmpresaInterface {
     
     void deleteEmpresa(Long id);
     Empresa saveEmpresa(Empresa empresa);
-	//Doador updateEmpresa(Long id, Doador doadorAtualizado);
-	//Doador updateEmpresa1(Long id, Doador doadorAtualizado);
 	Doador updateEmpresa1(Long id, Empresa empresaAtualizada);
+	Empresa updateEmpresa(Long id, Empresa empresa);
 	
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import com.planetar.model.Doador;
 import com.planetar.services.DoadorInterface;
 
@@ -32,7 +33,7 @@ public class DoadorController {
     public String listDoador(Model model) {
         List<Doador> doadorList = doadorService.getAllDoador();
         model.addAttribute("doadorList", doadorList);
-        return "listarDoador";
+        return "listagemDoador";
     }
 
     @GetMapping("/novo")
@@ -57,6 +58,31 @@ public class DoadorController {
         }
     }
 
+    @GetMapping("/editar/{id}")
+	public String showFormForUpdate(@PathVariable Long id, Model model) {
+		Doador doador = doadorService.getDoadorById(id);
+		model.addAttribute("doador", doador);
+		return "doadorUpdateForm";
+}
+    
+    
+    @PostMapping("/editar/{id}")
+    public String updateDoador(@PathVariable Long id,@RequestBody Doador doador, Model model) {
+        try {
+            System.out.println("Recebendo dados do doador: " + doador);
+            Doador updateDoador = doadorService.updateDoador(id, doador);
+            System.out.println("Doador salvo com sucesso: " + updateDoador);
+
+           
+            List<Doador> doadorList = doadorService.getAllDoador();
+
+            model.addAttribute("doadorList", doadorList);
+            return "redirect:/doador/successPage";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/doador";
+        }
+    }
 
     @GetMapping("/successPage")
     public String successPage() {

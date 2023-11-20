@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Doadores</title>
+</head>
+<body>
+
+    <h2>Listagem de Doadores</h2>
+
+    <!-- Formulário de Pesquisa -->
+    <form action="#" method="get" th:action="@{/doador}" th:object="${searchForm}">
+        <label for="searchInput">Pesquisar:</label>
+        <input type="text" id="searchInput" th:field="*{keyword}" />
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <!-- Cabeçalhos das Colunas -->
+                <!-- ... (mantenha os cabeçalhos existentes) ... -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Linhas de Doadores -->
+            <tr th:each="doador : ${doadorList}">
+                <td th:text="${doador.nome}"></td>
+                <td th:text="${doador.sobrenome}"></td>
+                <!-- ... (mantenha as colunas existentes) ... -->
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

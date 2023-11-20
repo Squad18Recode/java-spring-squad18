@@ -35,10 +35,7 @@ public class Doador implements Serializable{
 	@Column(nullable = false)
 	private Long cpf;
 	
-	@Modifying
-	@Query("ALTER TABLE doador DROP COLUMN telefone")
-	void removeTelefoneColumn() {
-	}
+	
 
 	
 	private String disponibilidade;
