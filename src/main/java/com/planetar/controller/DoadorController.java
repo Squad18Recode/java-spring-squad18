@@ -66,24 +66,14 @@ public class DoadorController {
 }
     
     
+    
     @PostMapping("/editar/{id}")
-    public String updateDoador(
-            @PathVariable Long id,
-            @RequestParam("nome") String nome,
-            @RequestParam("sobrenome") String sobrenome,
-            @RequestParam("cpf") String cpf,
-            @RequestParam("rg") String rg,
-            @RequestParam("email") String email,
-            @RequestParam("telefone") String telefone,
-            @RequestParam("disponibilidade") String disponibilidade,
-            Model model) {
-
+    public String updateDoador(@PathVariable Long id, @RequestBody Doador doador, Model model) {
         try {
-            
-            Doador doador = new Doador(id, nome, sobrenome, cpf, id, id, rg, email, id, telefone, disponibilidade, disponibilidade, disponibilidade, id);
-
             System.out.println("Recebendo dados do doador: " + doador);
+
             Doador updatedDoador = doadorService.updateDoador(id, doador);
+
             System.out.println("Doador atualizado com sucesso: " + updatedDoador);
 
             List<Doador> doadorList = doadorService.getAllDoador();
@@ -95,6 +85,38 @@ public class DoadorController {
             return "redirect:/doador";
         }
     }
+
+    //essa rota seria para usar no navegador
+    
+    //@PostMapping("/editar/{id}")
+    //public String updateDoador(
+           //@PathVariable Long id,
+            //@RequestParam("nome") String nome,
+            //@RequestParam("sobrenome") String sobrenome,
+           // @RequestParam("cpf") String cpf,
+           // @RequestParam("rg") String rg,
+           // @RequestParam("email") String email,
+           // @RequestParam("telefone") String telefone,
+           // @RequestParam("disponibilidade") String disponibilidade,
+            //Model model) {
+
+        //try {
+            
+            //Doador doador = new Doador(id, nome, sobrenome, cpf, id, id, rg, email, id, telefone, disponibilidade, disponibilidade, disponibilidade, id);
+
+            //System.out.println("Recebendo dados do doador: " + doador);
+            //Doador updatedDoador = doadorService.updateDoador(id, doador);
+            //System.out.println("Doador atualizado com sucesso: " + updatedDoador);
+
+            //List<Doador> doadorList = doadorService.getAllDoador();
+            //model.addAttribute("doadorList", doadorList);
+
+            //return "redirect:/doador/successPage";
+        //} catch (Exception e) {
+            //e//.printStackTrace();
+            //return "redirect:/doador";
+        //}
+    //}
 
     
     @GetMapping("/deletar/{id}")

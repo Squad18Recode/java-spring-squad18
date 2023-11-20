@@ -7,12 +7,11 @@ import com.planetar.model.Doador;
 import com.planetar.model.Empresa;
 
 public interface EmpresaInterface {
+
 	List<Empresa> getAllEmpresa();
     Empresa getEmpresaById(Long id);
-    
+    Empresa updateEmpresa(Long id, Empresa empresa);
     void deleteEmpresa(Long id);
-    Empresa saveEmpresa(Empresa empresa);
-	Doador updateEmpresa1(Long id, Empresa empresaAtualizada);
-	Empresa updateEmpresa(Long id, Empresa empresa);
+	Empresa saveEmpresa(Empresa empresa);
 	
 }

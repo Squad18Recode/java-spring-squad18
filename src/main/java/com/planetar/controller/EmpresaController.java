@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.google.gson.Gson;
 import com.planetar.model.Doador;
@@ -48,10 +49,10 @@ public class EmpresaController {
 	    @PostMapping("/save")
 	    public String saveDoador(@RequestBody Empresa empresa, Model model) {
 	        try {
-	        	System.out.println("Recebendo dados do doador: " + empresa);
+	        	System.out.println("Recebendo dados da empresa: " + empresa);
 	            Empresa saveEmpresa = empresaService.saveEmpresa(empresa);
-	            System.out.println("Doador salvo com sucesso: " + saveEmpresa);
-	            model.addAttribute("savedDoador", saveEmpresa);
+	            System.out.println("Empresa salvo com sucesso: " + saveEmpresa);
+	            model.addAttribute("savedEmpresa", saveEmpresa);
 	            return "redirect:/doador/successPage";
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -59,10 +60,49 @@ public class EmpresaController {
 	        }
 	    }
 	    
-	    @PostMapping("/editar/{id}")
+	    ///@GetMapping("/editar/{id}")
+		//public String showEditForm(@PathVariable Long id, Model model) {
+			//Empresa empresa = empresaService.getEmpresaById(id);
+			//model.addAttribute("doador", empresa);
+			///return "updateEmpresa";
+	//}
+	    
+	    
+	    //@PostMapping("/editar/{id}")
+	    //public String updateDoador(
+	            //@PathVariable Long id,
+	            ///@RequestParam("nome") String nome,
+	            //@RequestParam("caracteristica_empresa") String caracteristica_empresa,
+	            //@RequestParam("cnpj") String cnpj,
+	            //Model model) {
+
+	        //try {
+	            
+	            ///Empresa empresa = new Empresa(id, nome,caracteristica_empresa, id);
+
+	            //System.out.println("Recebendo dados do doador: " + empresa);
+	            //Empresa updatedEmpresa = empresaService.updateEmpresa(id, empresa);
+	            //System.out.println("Doador atualizado com sucesso: " + updatedEmpresa);
+
+	            //List<Empresa> doadorList = empresaService.getAllEmpresa();
+	            //model.addAttribute("doadorList", doadorList);
+
+	            //return "redirect:/doador/successPage";
+	       // } catch (Exception e) {
+	            //e.printStackTrace();
+	            //return "redirect:/doador";
+	       //}
+	   // }
+	    
+	    
+	    
+	    
+	    
+	    
+	   @PostMapping("/editar/{id}")
 	    public String updateDoador(@PathVariable Long id,@RequestBody Empresa empresa, Model model) {
 	        try {
-	            System.out.println("Recebendo dados do doador: " + empresa);
+	           System.out.println("Recebendo dados do doador: " + empresa);
 	            Empresa updateEmpresa = empresaService.updateEmpresa(id, empresa);
 	            System.out.println("Doador salvo com sucesso: " + updateEmpresa);
 
@@ -70,7 +110,7 @@ public class EmpresaController {
 	            List<Empresa> empresaList = empresaService.getAllEmpresa();
 
 	            model.addAttribute("empresa", empresaList);
-	            return "redirect:/doador/successPage";
+	           return "redirect:/doador/successPage";
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	            return "redirect:/empresa";

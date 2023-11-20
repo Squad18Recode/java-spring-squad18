@@ -67,8 +67,10 @@ public class Empresa {
 
 	public Empresa() {
 		super();
-		
+		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 	

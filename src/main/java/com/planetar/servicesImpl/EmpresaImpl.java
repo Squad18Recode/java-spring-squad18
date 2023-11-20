@@ -53,10 +53,6 @@ public class EmpresaImpl implements EmpresaInterface {
         return empresaRepositorio.save(empresa);
     }
 
-	@Override
-	public Doador updateEmpresa1(Long id, Empresa empresaAtualizada) {
-		return null;
-	}
-
+	
 	
 }
