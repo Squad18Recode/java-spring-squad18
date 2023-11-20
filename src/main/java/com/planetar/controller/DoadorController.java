@@ -59,30 +59,44 @@ public class DoadorController {
     }
 
     @GetMapping("/editar/{id}")
-	public String showFormForUpdate(@PathVariable Long id, Model model) {
+	public String showEditForm(@PathVariable Long id, Model model) {
 		Doador doador = doadorService.getDoadorById(id);
 		model.addAttribute("doador", doador);
-		return "doadorUpdateForm";
+		return "updateDoador";
 }
     
     
     @PostMapping("/editar/{id}")
-    public String updateDoador(@PathVariable Long id,@RequestBody Doador doador, Model model) {
+    public String updateDoador(
+            @PathVariable Long id,
+            @RequestParam("nome") String nome,
+            @RequestParam("sobrenome") String sobrenome,
+            @RequestParam("cpf") String cpf,
+            @RequestParam("rg") String rg,
+            @RequestParam("email") String email,
+            @RequestParam("telefone") String telefone,
+            @RequestParam("disponibilidade") String disponibilidade,
+            Model model) {
+
         try {
+            
+            Doador doador = new Doador(id, nome, sobrenome, cpf, id, id, rg, email, id, telefone, disponibilidade, disponibilidade, disponibilidade, id);
+
             System.out.println("Recebendo dados do doador: " + doador);
-            Doador updateDoador = doadorService.updateDoador(id, doador);
-            System.out.println("Doador salvo com sucesso: " + updateDoador);
+            Doador updatedDoador = doadorService.updateDoador(id, doador);
+            System.out.println("Doador atualizado com sucesso: " + updatedDoador);
 
-           
             List<Doador> doadorList = doadorService.getAllDoador();
-
             model.addAttribute("doadorList", doadorList);
+
             return "redirect:/doador/successPage";
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/doador";
         }
     }
+
+    
     @GetMapping("/deletar/{id}")
 	public String deleteDoador(@PathVariable Long id) { 
 		doadorService.deleteDoador(id);

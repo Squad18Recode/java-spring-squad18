@@ -56,21 +56,5 @@ public class DoadorImpl implements DoadorInterface {
         return doadorRepository.save(doador);
     }
 
-	@Override
-	public Doador updateDoador1(Long id, Doador doadorAtualizado) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Doador updateDoador(Doador doador) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Doador deleteDoador(Long id, Doador doador) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
