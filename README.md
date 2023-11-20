@@ -1,10 +1,13 @@
 # DesafioSquad18 - 2º Entrega
 
 # Banco de Dados - Modelo Conceitual
-![BD-conceitual](https://github.com/Squad18Recode/DesafioSquad-2/assets/141359733/7d8a9bdd-2407-47f7-86da-3aa6d1b96428)
+![BD-conceitual](https://github.com/Squad18Recode/java-spring-squad18/assets/141359733/2db30b42-031e-418a-9355-4d5d1dc184ed)
+
 
 # Banco de Dados - Modelo Lógico
-![BD-lógico](https://github.com/Squad18Recode/DesafioSquad-2/assets/141359733/adcf88d1-3ae1-4a0f-a640-d2e4b537b235)
+![BD-lógico](https://github.com/Squad18Recode/java-spring-squad18/assets/141359733/db67f91f-9245-4938-a481-a8f79c9d2784)
+
 
 # UML
-![UML](https://github.com/Squad18Recode/DesafioSquad-2/assets/141359733/0167a971-5f7c-4287-b2f2-94092dc93923)
+![UML](https://github.com/Squad18Recode/java-spring-squad18/assets/141359733/409f7720-5dd8-4762-a6f4-442ccb97f04b)
+
